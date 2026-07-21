@@ -2,7 +2,8 @@
 
 A Manifest V3 Chrome extension that blocks supported third-party advertising requests and removes high-confidence banner, popup, native, and rich-media advertising outside protected video players.
 
-![iBlock logo](store-assets/logo-256.png)
+<img width="256" height="256" alt="logo-256" src="https://github.com/user-attachments/assets/9834e79e-ee12-4a2e-966e-e7473e3f492b" />
+
 
 ## Scope
 
