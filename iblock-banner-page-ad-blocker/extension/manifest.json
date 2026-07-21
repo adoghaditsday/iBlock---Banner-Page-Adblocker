@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "iBlock – Banner and Page Ad Blocker",
+  "short_name": "iBlock",
+  "version": "1.0.0",
+  "description": "Blocks supported third-party ad requests and high-confidence banner, popup, native, and rich-media ads outside protected video players.",
+  "permissions": [
+    "storage",
+    "tabs",
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "service_worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "iBlock – Banner and Page Ad Blocker",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      { "id": "sinkhole_core", "enabled": true, "path": "rules/sinkhole_core.json" },
+      { "id": "rich_media_ads", "enabled": true, "path": "rules/rich_media_ads.json" },
+      { "id": "popup_redirects", "enabled": false, "path": "rules/popup_redirects.json" },
+      { "id": "native_tracking", "enabled": false, "path": "rules/native_tracking.json" },
+      { "id": "aggressive_streaming", "enabled": false, "path": "rules/aggressive_streaming.json" }
+    ]
+  }
+}
